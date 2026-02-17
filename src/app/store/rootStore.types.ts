@@ -1,6 +1,7 @@
-import { StateCreator } from 'zustand';
-import { AnswersSlice } from './answers';
-import { GameSlice } from './game';
+import type { StateCreator } from 'zustand';
+
+import type { AnswersSlice } from './answers';
+import type { GameSlice } from './game';
 
 export interface AppStore {
   game: GameSlice;

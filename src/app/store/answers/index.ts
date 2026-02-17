@@ -1,2 +1,2 @@
-export { createAnswersSlice } from './answers';
-export type { AnswersSlice } from './answers.types';
+export { createAnswersSlice } from './createAnswersSlice';
+export type { AnswersSlice } from './createAnswersSlice.types';

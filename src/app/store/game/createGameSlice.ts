@@ -1,8 +1,8 @@
 import { getQuestions, RequestQuestionsParams } from '@/entities/questions';
 
-import { ImmerStateCreator } from '../store.types';
+import type { ImmerStateCreator } from '../rootStore.types';
 import { getCorrectAnswers } from './lib/getCorrectAnswers';
-import { GameSlice } from './game.types';
+import type { GameSlice } from './createGameSlice.types';
 
 export const createGameSlice: ImmerStateCreator<GameSlice> = (
   set

@@ -45,6 +45,6 @@ const createRoutes = () => {
 const routes = createRoutesFromElements(createRoutes());
 const router = createBrowserRouter(routes);
 
-export const BrowserRouter = () => {
+export const AppRouter = () => {
   return <RouterProvider router={router} />;
 };

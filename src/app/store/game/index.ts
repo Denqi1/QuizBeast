@@ -1,2 +1,2 @@
-export { createGameSlice } from './game';
-export type { GameSlice } from './game.types';
+export { createGameSlice } from './createGameSlice';
+export type { GameSlice } from './createGameSlice.types';

@@ -4,7 +4,7 @@ import { immer } from 'zustand/middleware/immer';
 
 import { createAnswersSlice } from './answers';
 import { createGameSlice } from './game';
-import type { AppStore } from './store.types';
+import type { AppStore } from './rootStore.types';
 
 export const useAppStore = create<AppStore>()(
   immer(

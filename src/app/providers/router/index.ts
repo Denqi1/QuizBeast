@@ -1,1 +1,1 @@
-export { BrowserRouter } from './router-provider';
+export { AppRouter } from './AppRouter';

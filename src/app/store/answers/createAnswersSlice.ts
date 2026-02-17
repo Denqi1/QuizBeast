@@ -1,5 +1,5 @@
-import type { ImmerStateCreator } from '../store.types';
-import type { AnswersSlice } from './answers.types';
+import type { ImmerStateCreator } from '../rootStore.types';
+import type { AnswersSlice } from './createAnswersSlice.types';
 
 export const createAnswersSlice: ImmerStateCreator<AnswersSlice> = (
   set,
