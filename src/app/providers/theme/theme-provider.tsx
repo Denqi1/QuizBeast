@@ -4,7 +4,8 @@ import {
   ThemeProvider,
   createTheme,
 } from '@mui/material';
-import { CustomThemeProviderProps } from './theme-provider.types';
+
+import type { CustomThemeProviderProps } from './theme-provider.types';
 
 const theme = createTheme({
   palette: {

@@ -1,6 +1,6 @@
 import { QuestionModel } from '@/entities/questions';
 
-export function getCorrectAnswers(questions: QuestionModel[]) {
+export const getCorrectAnswers = (questions: QuestionModel[]) => {
   const correctAnswers = questions.reduce((obj, question) => {
     const result: string[] | null = [];
 
@@ -21,4 +21,4 @@ export function getCorrectAnswers(questions: QuestionModel[]) {
   }, {});
 
   return correctAnswers;
-}
+};

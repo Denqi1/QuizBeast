@@ -4,6 +4,7 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from 'react-router-dom';
+
 import { HomePage } from '@/pages/home';
 import { DifficultyPage } from '@/pages/difficulty';
 import { GamePage } from '@/pages/game';
@@ -41,9 +42,8 @@ const createRoutes = () => {
   });
 };
 
-const router = createBrowserRouter(
-  createRoutesFromElements(<>{createRoutes()}</>)
-);
+const routes = createRoutesFromElements(createRoutes());
+const router = createBrowserRouter(routes);
 
 export const BrowserRouter = () => {
   return <RouterProvider router={router} />;
