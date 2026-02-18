@@ -1,1 +1,1 @@
-export { ResultPage } from './result-page.ui';
+export { ResultPage } from './ui/ResultPage';
