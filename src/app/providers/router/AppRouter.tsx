@@ -7,7 +7,7 @@ import {
 
 import { HomePage } from '@/pages/home';
 import { DifficultyPage } from '@/pages/Difficulty';
-import { GamePage } from '@/pages/game';
+import { GamePage } from '@/pages/Game';
 import { CategoryPage } from '@/pages/Category';
 import { ResultPage } from '@/pages/result';
 
