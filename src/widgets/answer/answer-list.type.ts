@@ -1,4 +1,4 @@
-import { Answers } from '@/entities/questions';
+import { Answers } from '@/entities/Question';
 
 export type AnswerListProps = {
   answers: Answers;

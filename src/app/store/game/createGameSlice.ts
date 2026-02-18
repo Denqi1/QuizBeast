@@ -1,4 +1,4 @@
-import { getQuestions, RequestQuestionsParams } from '@/entities/questions';
+import { getQuestions, RequestQuestionsParams } from '@/entities/Question';
 
 import type { ImmerStateCreator } from '../rootStore.types';
 import { getCorrectAnswers } from './lib/getCorrectAnswers';

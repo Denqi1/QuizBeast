@@ -1,10 +1,14 @@
-export type RequestQuestionsParams = {
+/**
+ * TODO: Распихнуть типы по lib/model/api
+ */
+
+export interface RequestQuestionsParams {
   category: string | undefined;
   difficulty: Difficulty | undefined;
   limit?: number;
-};
+}
 
-export type QuestionModel = {
+export interface QuestionModel {
   id: number;
   question: string;
   description: null | string;
@@ -17,25 +21,25 @@ export type QuestionModel = {
   tags: string[];
   category: string;
   difficulty: Difficulty;
-};
+}
 
-export type Answers = {
+export interface Answers {
   answer_a: null | string;
   answer_b: null | string;
   answer_c: null | string;
   answer_d: null | string;
   answer_e: null | string;
   answer_f: null | string;
-};
+}
 
-export type CorrectAnswers = {
+export interface CorrectAnswers {
   [answer_a_correct: string]: IsCorrect;
   answer_b_correct: IsCorrect;
   answer_c_correct: IsCorrect;
   answer_d_correct: IsCorrect;
   answer_e_correct: IsCorrect;
   answer_f_correct: IsCorrect;
-};
+}
 
 export type IsCorrect = 'true' | 'false';
 

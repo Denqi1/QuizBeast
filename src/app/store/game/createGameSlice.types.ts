@@ -1,7 +1,7 @@
 import type {
   QuestionModel,
   RequestQuestionsParams,
-} from '@/entities/questions';
+} from '@/entities/Question';
 
 interface CorrectAnswers {
   [indexQuestion: number]: string[];

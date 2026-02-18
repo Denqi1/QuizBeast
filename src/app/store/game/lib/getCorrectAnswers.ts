@@ -1,4 +1,4 @@
-import { QuestionModel } from '@/entities/questions';
+import { QuestionModel } from '@/entities/Question';
 
 export const getCorrectAnswers = (questions: QuestionModel[]) => {
   const correctAnswers = questions.reduce((obj, question) => {
