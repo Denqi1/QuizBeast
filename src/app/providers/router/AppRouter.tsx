@@ -6,9 +6,9 @@ import {
 } from 'react-router-dom';
 
 import { HomePage } from '@/pages/home';
-import { DifficultyPage } from '@/pages/difficulty';
+import { DifficultyPage } from '@/pages/Difficulty';
 import { GamePage } from '@/pages/game';
-import { CategoryPage } from '@/pages/category';
+import { CategoryPage } from '@/pages/Category';
 import { ResultPage } from '@/pages/result';
 
 const routesMap = {
