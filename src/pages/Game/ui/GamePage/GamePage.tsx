@@ -1,11 +1,10 @@
 import { Link } from 'react-router-dom';
 import { Box, Button, CircularProgress, Typography } from '@mui/material';
 
-import { AnswerList } from '@/widgets/answer';
-
 import { pathKeys } from '@/shared/lib/react-router';
 
-import { useGamePage } from '../model/useGamePage';
+import { useGamePage } from '../../model/useGamePage';
+import { AnswersList } from '../AnswersList';
 
 export const GamePage = () => {
   const {
@@ -15,6 +14,8 @@ export const GamePage = () => {
     questions,
     goToNextQuestion,
     submitFinalAnswer,
+    checkedAnswers,
+    toggleAnswer,
   } = useGamePage();
 
   const handleFinalAnswerSubmit = () => {
@@ -69,7 +70,13 @@ export const GamePage = () => {
           {currentQuestion?.question}
         </Typography>
       </Box>
-      <AnswerList answers={currentQuestion?.answers} />
+
+      <AnswersList
+        answers={currentQuestion?.answers}
+        checkedAnswers={checkedAnswers}
+        onAnswerToggle={toggleAnswer}
+      />
+
       <Box textAlign="center">
         {isWithinMaxAnswers ? (
           <Button

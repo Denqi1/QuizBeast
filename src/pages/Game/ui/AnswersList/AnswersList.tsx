@@ -1,9 +1,10 @@
 import { Box, FormGroup, Grid } from '@mui/material';
-import { AnswerListProps } from './answer-list.type';
-import { ToggleAnswerButton } from '@/features/answer';
 
-export function AnswerList(props: AnswerListProps) {
-  const { answers } = props;
+import { ToggleAnswerButton } from '../ToggleAnswerButton';
+import type { AnswersListProps } from './AnswersList.type';
+
+export const AnswersList = (props: AnswersListProps) => {
+  const { answers, checkedAnswers, onAnswerToggle } = props;
 
   return (
     <Grid
@@ -18,7 +19,11 @@ export function AnswerList(props: AnswerListProps) {
             <Grid item xs={6} key={answer}>
               <Box bgcolor="#D4A9FF" borderRadius="5px" p={2}>
                 <FormGroup>
-                  <ToggleAnswerButton answer={answer} />
+                  <ToggleAnswerButton
+                    answer={answer}
+                    isChecked={checkedAnswers.includes(answer)}
+                    onToggle={onAnswerToggle}
+                  />
                 </FormGroup>
               </Box>
             </Grid>
@@ -26,4 +31,4 @@ export function AnswerList(props: AnswerListProps) {
       )}
     </Grid>
   );
-}
+};

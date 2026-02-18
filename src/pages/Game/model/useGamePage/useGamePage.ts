@@ -34,6 +34,9 @@ export const useGamePage = () => {
   const increaseNumberOfAnswers = useAppStore((state) => {
     return state.answers.increaseNumberOfAnswers;
   });
+  const toggleAnswer = useAppStore((state) => {
+    return state.answers.toggleAnswer;
+  });
 
   const submitFinalAnswer = () => {
     updateUserAnswers(checkedAnswers, questions[numberOfAnswers].id);
@@ -67,5 +70,7 @@ export const useGamePage = () => {
     isNoQuestionsFound,
     numberOfAnswers,
     questions,
+    checkedAnswers,
+    toggleAnswer,
   };
 };
