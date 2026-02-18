@@ -1,17 +1,20 @@
-import { Box, Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { Box, Button } from '@mui/material';
+
 import { ParallaxText } from '@/widgets/parallax-text';
 import { SmileCouscousSvg } from '@/widgets/couscous';
+
 import { pathKeys } from '@/shared/lib/react-router';
 
-export function HomePage() {
+export const HomePage = () => {
   return (
     <Box height="100dvh">
       <Box>
         <ParallaxText baseVelocity={0.6}>laughing couscous</ParallaxText>
         <ParallaxText baseVelocity={-0.6}>quiz game</ParallaxText>
       </Box>
+
       <Box display="flex" justifyContent="center" mt={15}>
         <Link to={pathKeys.category}>
           <motion.div whileHover={{ scale: 1.3 }}>
@@ -26,6 +29,7 @@ export function HomePage() {
           </motion.div>
         </Link>
       </Box>
+
       <Box
         position="absolute"
         right="50%"
@@ -43,4 +47,4 @@ export function HomePage() {
       </Box>
     </Box>
   );
-}
+};

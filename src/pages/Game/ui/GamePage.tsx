@@ -5,7 +5,7 @@ import { AnswerList } from '@/widgets/answer';
 
 import { pathKeys } from '@/shared/lib/react-router';
 
-import { useGamePage } from './model/useGamePage';
+import { useGamePage } from '../model/useGamePage';
 
 export const GamePage = () => {
   const {

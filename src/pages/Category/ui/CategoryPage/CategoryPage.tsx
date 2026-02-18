@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 import { CategoryModel, getCategories } from '@/entities/Category';
 
-import { CategoryList } from './ui/CategoryList';
+import { CategoryList } from '../../ui/CategoryList';
 
 export const CategoryPage = () => {
   const [categories, setCategories] = useState<CategoryModel[]>([]);

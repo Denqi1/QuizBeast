@@ -1,10 +1,13 @@
-import { Box, Button, Typography } from '@mui/material';
-import { useAppStore } from '@/app/store';
-import { isArraysEqual } from './result-page.lib';
 import { Link } from 'react-router-dom';
+import { Box, Button, Typography } from '@mui/material';
+
+import { useAppStore } from '@/app/store';
+
 import { pathKeys } from '@/shared/lib/react-router';
 
-export function ResultPage() {
+import { isArraysEqual } from '../lib/isArraysEqual';
+
+export const ResultPage = () => {
   const userAnswers = useAppStore((state) => state.answers.userAnswers);
   const correctAnswers = useAppStore((state) => state.game.correctAnswers);
   const questions = useAppStore((state) => state.game.questions);
@@ -80,4 +83,4 @@ export function ResultPage() {
       </Box>
     </Box>
   );
-}
+};
