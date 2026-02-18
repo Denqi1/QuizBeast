@@ -1,8 +1,9 @@
-import { Box, Button, Grid, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
-import { CategoryModel, getCategories } from '@/entities/category';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { Box, Button, Grid, Typography } from '@mui/material';
+
+import { CategoryModel, getCategories } from '@/entities/Category';
 
 export function CategoryList() {
   const [categories, setCategories] = useState<CategoryModel[]>([]);

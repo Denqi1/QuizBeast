@@ -1,9 +1,12 @@
 import axios from 'axios';
 
+const API_KEY = import.meta.env.VITE_API_KEY;
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 export const instance = axios.create({
-  method: 'get',
-  baseURL: 'https://quizapi.io/api/v1',
+  method: 'GET',
+  baseURL: API_BASE_URL,
   headers: {
-    'X-Api-Key': 'jWbpWSe3AJbIkDyneQqBO6xNP5rOlqd2hO8hhwug',
+    'X-Api-Key': API_KEY,
   },
 });
