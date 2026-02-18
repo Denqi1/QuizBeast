@@ -12,5 +12,5 @@ export interface GameSlice {
   isLoading: boolean;
   isError: boolean;
   correctAnswers: CorrectAnswers;
-  requestQuestions: (_params: RequestQuestionsParams) => Promise<void>;
+  requestQuestions: (params: RequestQuestionsParams) => Promise<void>;
 }

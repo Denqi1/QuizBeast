@@ -1,10 +1,8 @@
 import { instance } from '@/shared/lib/axios';
 
 import { ENDPOINT_QUESTIONS } from '../../lib/endpoints';
-import type {
-  QuestionModel,
-  RequestQuestionsParams,
-} from './getQuestions.types';
+import type { QuestionModel } from '../../model/types';
+import type { RequestQuestionsParams } from './getQuestions.types';
 
 const requestQuestions = (params: RequestQuestionsParams) => {
   const { category, difficulty, limit } = params;

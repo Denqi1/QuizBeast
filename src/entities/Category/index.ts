@@ -1,1 +1,1 @@
-export { getCategories, type CategoryModel } from './api';
+export { getCategories, type CategoryModel } from './api/getCategories';

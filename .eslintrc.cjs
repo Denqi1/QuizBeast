@@ -6,6 +6,7 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
     'plugin:import/recommended',
+    'plugin:import/typescript',
     'plugin:jsx-a11y/recommended',
     'plugin:@typescript-eslint/recommended',
     'eslint-config-prettier',
@@ -16,13 +17,8 @@ module.exports = {
       version: 'detect',
     },
     'import/resolver': {
-      node: {
-        paths: ['src'],
-        extensions: ['.js', '.jsx', '.ts', '.tsx'],
-      },
-      alias: {
-        map: [['@', path.resolve(__dirname, './src')]],
-        extensions: ['.js', '.jsx', '.ts', '.d.ts', '.tsx'],
+      typescript: {
+        alwaysTryTypes: true,
       },
     },
   },
@@ -32,7 +28,8 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
-    'no-unused-vars': [
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': [
       'error',
       {
         vars: 'all',
