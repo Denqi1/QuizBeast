@@ -5,11 +5,11 @@ import {
   createRoutesFromElements,
 } from 'react-router-dom';
 
-import { HomePage } from '@/pages/home';
+import { HomePage } from '@/pages/Home';
 import { DifficultyPage } from '@/pages/Difficulty';
 import { GamePage } from '@/pages/Game';
 import { CategoryPage } from '@/pages/Category';
-import { ResultPage } from '@/pages/result';
+import { ResultPage } from '@/pages/Result';
 
 const routesMap = {
   home: {
