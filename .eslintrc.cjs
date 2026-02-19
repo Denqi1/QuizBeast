@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
   root: true,
   env: { browser: true, es2020: true },
@@ -13,14 +15,8 @@ module.exports = {
     'prettier',
   ],
   settings: {
-    react: {
-      version: 'detect',
-    },
-    'import/resolver': {
-      typescript: {
-        alwaysTryTypes: true,
-      },
-    },
+    react: { version: 'detect' },
+    'import/resolver': { typescript: { alwaysTryTypes: true } },
   },
   rules: {
     'import/no-cycle': [2, { maxDepth: '∞' }],
@@ -40,7 +36,7 @@ module.exports = {
     ],
     'react/react-in-jsx-scope': 'off',
   },
-  ignorePatterns: ['dist', '.eslintrc.cjs'],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.ts'],
   parser: '@typescript-eslint/parser',
   plugins: ['react-refresh', 'import'],
 };
