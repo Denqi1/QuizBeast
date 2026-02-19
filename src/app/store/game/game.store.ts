@@ -1,5 +1,5 @@
+import { ImmerStateCreator } from '../store.types';
 import { getCorrectAnswers } from './game.lib';
-import { ImmerStateCreator } from '../store';
 import {
   getQuestions,
   QuestionModel,
@@ -14,9 +14,7 @@ export type GameSlice = {
   requestQuestions: (_params: RequestQuestionsParams) => Promise<void>;
 };
 
-type CorrectAnswers = {
-  [indexQuestion: number]: string[];
-};
+type CorrectAnswers = { [indexQuestion: number]: string[] };
 
 export const createGameSlice: ImmerStateCreator<GameSlice> = (set) => ({
   questions: [],
