@@ -1,11 +1,10 @@
 import { instance } from '@/shared/lib/axios';
 
 import { ENDPOINT_CATEGORIES } from '../lib/constants';
-import { CategoriesDataResponse } from './getCategories.types';
+import { CategoryModel } from './getCategories.types';
 
 export async function getCategories() {
-  const { data }: CategoriesDataResponse =
-    await instance.get(ENDPOINT_CATEGORIES);
+  const { data } = await instance.get<CategoryModel[]>(ENDPOINT_CATEGORIES);
 
   return data;
 }

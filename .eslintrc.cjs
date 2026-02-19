@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
   root: true,
   env: { browser: true, es2020: true },
@@ -12,14 +14,9 @@ module.exports = {
     'prettier',
   ],
   settings: {
-    react: {
-      version: 'detect',
-    },
+    react: { version: 'detect' },
     'import/resolver': {
-      node: {
-        paths: ['src'],
-        extensions: ['.js', '.jsx', '.ts', '.tsx'],
-      },
+      node: { paths: ['src'], extensions: ['.js', '.jsx', '.ts', '.tsx'] },
       alias: {
         map: [['@', path.resolve(__dirname, './src')]],
         extensions: ['.js', '.jsx', '.ts', '.d.ts', '.tsx'],
@@ -43,7 +40,7 @@ module.exports = {
     ],
     'react/react-in-jsx-scope': 'off',
   },
-  ignorePatterns: ['dist', '.eslintrc.cjs'],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.ts'],
   parser: '@typescript-eslint/parser',
   plugins: ['react-refresh', 'import'],
 };

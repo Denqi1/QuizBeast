@@ -1,4 +1,4 @@
-import { ImmerStateCreator } from '../store';
+import { ImmerStateCreator } from '../store.types';
 
 export type AnswersSlice = {
   checkedAnswers: string[];
@@ -11,9 +11,7 @@ export type AnswersSlice = {
   clearNumberOfAnswers: () => void;
 };
 
-type CorrectAnswers = {
-  [indexQuestion: number]: string[];
-};
+type CorrectAnswers = { [indexQuestion: number]: string[] };
 
 export const createAnswersSlice: ImmerStateCreator<AnswersSlice> = (
   set,
