@@ -7,7 +7,7 @@ export const createAnswersSlice: ImmerStateCreator<AnswersSlice> = (
 ): AnswersSlice => {
   return {
     checkedAnswers: [],
-    numberOfAnswers: 0,
+    currentQuestionIndex: 0,
     userAnswers: {},
     clearCheckedAnswers: () => {
       set((state) => {
@@ -17,30 +17,33 @@ export const createAnswersSlice: ImmerStateCreator<AnswersSlice> = (
     toggleAnswer: (userAnswer: string) => {
       const checkedAnswers = get().answers.checkedAnswers;
 
-      if (checkedAnswers.includes(userAnswer)) {
-        const indexChecked = checkedAnswers.indexOf(userAnswer);
-        set((state) => {
-          state.answers.checkedAnswers.splice(indexChecked, 1);
-        });
-      } else if (!checkedAnswers.includes(userAnswer)) {
+      if (!checkedAnswers.includes(userAnswer)) {
         set((state) => {
           state.answers.checkedAnswers.push(userAnswer);
         });
+
+        return;
       }
-    },
-    increaseNumberOfAnswers() {
+
+      const indexChecked = checkedAnswers.indexOf(userAnswer);
+
       set((state) => {
-        ++state.answers.numberOfAnswers;
+        state.answers.checkedAnswers.splice(indexChecked, 1);
       });
     },
-    clearNumberOfAnswers() {
+    incrementQuestionIndex() {
       set((state) => {
-        state.answers.numberOfAnswers = 0;
+        ++state.answers.currentQuestionIndex;
       });
     },
-    updateUserAnswers: (answers, idQuestion) => {
+    resetQuestionIndex() {
       set((state) => {
-        state.answers.userAnswers[idQuestion] = answers;
+        state.answers.currentQuestionIndex = 0;
+      });
+    },
+    updateUserAnswers: (answers, questionId) => {
+      set((state) => {
+        state.answers.userAnswers[questionId] = answers;
       });
     },
   };

@@ -1,7 +1,10 @@
-import { getQuestions, RequestQuestionsParams } from '@/entities/Question';
+import {
+  getQuestions,
+  getCorrectAnswers,
+  RequestQuestionsParams,
+} from '@/entities/Question';
 
 import type { ImmerStateCreator } from '../rootStore.types';
-import { getCorrectAnswers } from './lib/getCorrectAnswers';
 import type { GameSlice } from './createGameSlice.types';
 
 export const createGameSlice: ImmerStateCreator<GameSlice> = (
@@ -19,16 +22,12 @@ export const createGameSlice: ImmerStateCreator<GameSlice> = (
 
       try {
         const dataQuestions = await getQuestions({ ...params });
-        set((state) => {
-          state.game.questions = dataQuestions;
-        });
 
         const correctAnswers = getCorrectAnswers(dataQuestions);
-        set((state) => {
-          state.game.correctAnswers = correctAnswers;
-        });
 
         set((state) => {
+          state.game.questions = dataQuestions;
+          state.game.correctAnswers = correctAnswers;
           state.game.isError = false;
         });
       } catch (error) {

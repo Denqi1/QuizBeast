@@ -1,21 +1,24 @@
 import { Link } from 'react-router-dom';
 import { Box, Button, CircularProgress, Typography } from '@mui/material';
 
-import { pathKeys } from '@/shared/lib/react-router';
+import { pathKeys } from '@/shared/lib/reactRouter';
 
 import { useGamePage } from '../../model/useGamePage';
 import { AnswersList } from '../AnswersList';
 
 export const GamePage = () => {
   const {
-    isPageLoading,
+    isLoading,
+    isError,
     isNoQuestionsFound,
-    numberOfAnswers,
+    currentQuestionIndex,
     questions,
     goToNextQuestion,
     submitFinalAnswer,
     checkedAnswers,
     toggleAnswer,
+    categoryName,
+    difficultyLevel,
   } = useGamePage();
 
   const handleFinalAnswerSubmit = () => {
@@ -26,7 +29,7 @@ export const GamePage = () => {
     goToNextQuestion();
   };
 
-  if (isPageLoading) {
+  if (isLoading) {
     return (
       <Box
         display="flex"
@@ -35,6 +38,25 @@ export const GamePage = () => {
         alignItems="center"
       >
         <CircularProgress color="secondary" size={100} />
+      </Box>
+    );
+  }
+
+  if (isError) {
+    return (
+      <Box
+        textAlign="center"
+        height="100dvh"
+        display="flex"
+        flexDirection="column"
+        justifyContent="center"
+        alignItems="center"
+      >
+        <Typography variant="h4" mb={1}>
+          Something went wrong 😥
+        </Typography>
+
+        <Typography variant="h6">Please try again later</Typography>
       </Box>
     );
   }
@@ -60,8 +82,8 @@ export const GamePage = () => {
     );
   }
 
-  const currentQuestion = questions[numberOfAnswers];
-  const isWithinMaxAnswers = numberOfAnswers < questions.length - 1;
+  const currentQuestion = questions[currentQuestionIndex];
+  const isWithinMaxAnswers = currentQuestionIndex < questions.length - 1;
 
   return (
     <Box m="0px 20px">
@@ -87,7 +109,7 @@ export const GamePage = () => {
             Next question
           </Button>
         ) : (
-          <Link to={pathKeys.result}>
+          <Link to={pathKeys.result(categoryName, difficultyLevel)}>
             <Button
               onClick={handleFinalAnswerSubmit}
               variant="contained"

@@ -2,10 +2,10 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Box, Button } from '@mui/material';
 
-import { ParallaxText } from '@/widgets/parallax-text';
-import { SmileCouscousSvg } from '@/widgets/couscous';
+import { ParallaxText } from '@/shared/ui/parallax-text';
+import { SmileCouscousSvg } from '@/shared/ui/couscous';
 
-import { pathKeys } from '@/shared/lib/react-router';
+import { pathKeys } from '@/shared/lib/reactRouter';
 
 export const HomePage = () => {
   return (
@@ -16,7 +16,7 @@ export const HomePage = () => {
       </Box>
 
       <Box display="flex" justifyContent="center" mt={15}>
-        <Link to={pathKeys.category}>
+        <Link to={pathKeys.category()}>
           <motion.div whileHover={{ scale: 1.3 }}>
             <Button
               color="secondary"

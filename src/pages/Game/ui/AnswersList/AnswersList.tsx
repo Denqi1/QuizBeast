@@ -1,7 +1,7 @@
 import { Box, FormGroup, Grid } from '@mui/material';
 
 import { ToggleAnswerButton } from '../ToggleAnswerButton';
-import type { AnswersListProps } from './AnswersList.type';
+import type { AnswersListProps } from './AnswersList.types';
 
 export const AnswersList = (props: AnswersListProps) => {
   const { answers, checkedAnswers, onAnswerToggle } = props;

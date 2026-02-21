@@ -1,0 +1,1 @@
+export { isArraysEqual } from './isArraysEqual';

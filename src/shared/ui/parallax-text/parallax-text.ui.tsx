@@ -8,12 +8,16 @@ import {
   wrap,
   motion,
 } from 'framer-motion';
-import { ParallaxProps } from './parallax-text.types';
 import { useRef } from 'react';
 import { Box } from '@mui/material';
+
+import { ParallaxProps } from './parallax-text.types';
+
 import './parallax-text.styles.css';
 
-export function ParallaxText({ children, baseVelocity = 100 }: ParallaxProps) {
+export const ParallaxText = (props: ParallaxProps) => {
+  const { children, baseVelocity = 100 } = props;
+
   const baseX = useMotionValue(0);
   const { scrollY } = useScroll();
   const scrollVelocity = useVelocity(scrollY);
@@ -25,12 +29,15 @@ export function ParallaxText({ children, baseVelocity = 100 }: ParallaxProps) {
     clamp: false,
   });
 
-  const x = useTransform(baseX, (v) => `${wrap(-25, 0, v)}%`);
+  const x = useTransform(baseX, (value) => {
+    return `${wrap(-25, 0, value)}%`;
+  });
 
-  const directionFactor = useRef<number>(1);
+  const directionFactor = useRef(1);
 
   useAnimationFrame((_t, delta) => {
     let moveBy = directionFactor.current * baseVelocity * (delta / 1000);
+
     moveBy += directionFactor.current * moveBy * velocityFactor.get();
     baseX.set(baseX.get() + moveBy);
   });
@@ -48,4 +55,4 @@ export function ParallaxText({ children, baseVelocity = 100 }: ParallaxProps) {
       </motion.div>
     </Box>
   );
-}
+};

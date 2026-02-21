@@ -1,1 +1,1 @@
-export { DifficultyPage } from './DifficultyPage';
+export { DifficultyPage } from './ui/DifficultyPage';

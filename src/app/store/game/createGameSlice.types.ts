@@ -1,16 +1,13 @@
 import type {
   QuestionModel,
   RequestQuestionsParams,
+  AnswersByQuestionId,
 } from '@/entities/Question';
-
-interface CorrectAnswers {
-  [indexQuestion: number]: string[];
-}
 
 export interface GameSlice {
   questions: QuestionModel[];
   isLoading: boolean;
   isError: boolean;
-  correctAnswers: CorrectAnswers;
+  correctAnswers: AnswersByQuestionId;
   requestQuestions: (params: RequestQuestionsParams) => Promise<void>;
 }

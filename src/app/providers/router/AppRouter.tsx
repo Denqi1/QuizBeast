@@ -10,27 +10,34 @@ import { DifficultyPage } from '@/pages/Difficulty';
 import { GamePage } from '@/pages/Game';
 import { CategoryPage } from '@/pages/Category';
 import { ResultPage } from '@/pages/Result';
+import { Page404 } from '@/pages/404';
+
+import { routePaths } from '@/shared/lib/reactRouter';
 
 const routesMap = {
   home: {
-    path: '/',
+    path: routePaths.home,
     component: <HomePage />,
   },
   category: {
-    path: 'category/',
+    path: routePaths.category,
     component: <CategoryPage />,
   },
   difficulty: {
-    path: 'category/:categoryName/',
+    path: routePaths.difficulty,
     component: <DifficultyPage />,
   },
-  match: {
-    path: 'category/:categoryName/difficulty/:difficultyLevel/',
+  game: {
+    path: routePaths.game,
     component: <GamePage />,
   },
   result: {
-    path: 'category/:categoryName/difficulty/:difficultyLevel/game-result/',
+    path: routePaths.result,
     component: <ResultPage />,
+  },
+  notFound: {
+    path: routePaths.notFound,
+    component: <Page404 />,
   },
 };
 

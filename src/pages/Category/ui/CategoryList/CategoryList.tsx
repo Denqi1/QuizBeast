@@ -2,7 +2,9 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Button, Grid } from '@mui/material';
 
-import { CategoryListProps } from './CategoryList.props';
+import { pathKeys } from '@/shared/lib/reactRouter';
+
+import { CategoryListProps } from './CategoryList.types';
 
 export const CategoryList = (props: CategoryListProps) => {
   const { categories } = props;
@@ -30,7 +32,7 @@ export const CategoryList = (props: CategoryListProps) => {
                */
               transition={{ duration: (duration = duration + 0.1) }}
             >
-              <Link to={name}>
+              <Link to={pathKeys.difficulty(name)}>
                 <Button color="secondary" variant="contained">
                   {name}
                 </Button>

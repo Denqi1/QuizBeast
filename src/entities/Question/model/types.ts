@@ -20,6 +20,10 @@ export interface CorrectAnswers {
   answer_f_correct: IsCorrect;
 }
 
+export interface AnswersByQuestionId {
+  [questionId: number]: string[];
+}
+
 export interface QuestionModel {
   id: number;
   question: string;

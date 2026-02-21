@@ -1,11 +1,13 @@
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Box, Button, Typography } from '@mui/material';
 
-import { pathKeys } from '@/shared/lib/react-router';
+import { pathKeys } from '@/shared/lib/reactRouter';
 
 const DIFFICULTY_LEVELS = ['easy', 'medium', 'hard'];
 
 export const DifficultyPage = () => {
+  const { categoryName } = useParams();
+
   return (
     <Box
       display="flex"
@@ -21,7 +23,7 @@ export const DifficultyPage = () => {
       <Box display="flex" gap={4}>
         {DIFFICULTY_LEVELS.map((difficulty) => {
           return (
-            <Link to={pathKeys.difficulty + difficulty} key={difficulty}>
+            <Link to={pathKeys.game(categoryName, difficulty)} key={difficulty}>
               <Button variant="contained" color="secondary">
                 {difficulty}
               </Button>

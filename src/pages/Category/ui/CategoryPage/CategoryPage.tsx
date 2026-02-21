@@ -1,23 +1,38 @@
-import { useEffect, useState } from 'react';
-import { Box, Typography } from '@mui/material';
+import { useEffect } from 'react';
+import { Box, CircularProgress, Typography } from '@mui/material';
 import { motion } from 'framer-motion';
 
-import { CategoryModel, getCategories } from '@/entities/Category';
+import { useAppStore } from '@/app/store';
 
-import { CategoryList } from '../../ui/CategoryList';
+import { CategoryList } from '../CategoryList';
 
 export const CategoryPage = () => {
-  const [categories, setCategories] = useState<CategoryModel[]>([]);
+  const categories = useAppStore((state) => {
+    return state.category.categories;
+  });
+  const isLoading = useAppStore((state) => {
+    return state.category.isLoading;
+  });
+  const requestCategories = useAppStore((state) => {
+    return state.category.requestCategories;
+  });
 
   useEffect(() => {
-    const makeRequest = async () => {
-      const dataList = await getCategories();
+    requestCategories();
+  }, [requestCategories]);
 
-      setCategories(dataList);
-    };
-
-    makeRequest();
-  }, []);
+  if (isLoading) {
+    return (
+      <Box
+        display="flex"
+        height="100dvh"
+        justifyContent="center"
+        alignItems="center"
+      >
+        <CircularProgress color="secondary" size={100} />
+      </Box>
+    );
+  }
 
   return (
     <Box

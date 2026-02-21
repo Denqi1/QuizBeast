@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Box, Button, Typography } from '@mui/material';
 
-import { pathKeys } from '@/shared/lib/react-router';
+import { pathKeys } from '@/shared/lib/reactRouter';
 
 export const Page404 = () => {
   return (
@@ -12,7 +12,7 @@ export const Page404 = () => {
       <Typography>
         Sorry, we couldn`t find the page you were looking for.
       </Typography>
-      <Link to={pathKeys.home}>
+      <Link to={pathKeys.home()}>
         <Button>Back to home page</Button>
       </Link>
     </Box>

@@ -1,14 +1,12 @@
-interface CorrectAnswers {
-  [indexQuestion: number]: string[];
-}
+import type { AnswersByQuestionId } from '@/entities/Question';
 
 export interface AnswersSlice {
   checkedAnswers: string[];
-  numberOfAnswers: number;
-  userAnswers: CorrectAnswers;
+  currentQuestionIndex: number;
+  userAnswers: AnswersByQuestionId;
   clearCheckedAnswers: () => void;
   toggleAnswer: (userAnswer: string) => void;
-  increaseNumberOfAnswers: () => void;
-  updateUserAnswers: (answers: string[], indexQuestion: number) => void;
-  clearNumberOfAnswers: () => void;
+  incrementQuestionIndex: () => void;
+  updateUserAnswers: (answers: string[], questionId: number) => void;
+  resetQuestionIndex: () => void;
 }

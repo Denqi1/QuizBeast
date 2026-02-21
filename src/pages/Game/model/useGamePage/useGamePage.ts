@@ -1,11 +1,13 @@
-import { useAppStore } from '@/app/store';
-import { Difficulty, limitQuestions } from '@/entities/Question';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
+import { useAppStore } from '@/app/store';
+
+import { Difficulty, LIMIT_QUESTIONS } from '@/entities/Question';
+
 export const useGamePage = () => {
-  const numberOfAnswers = useAppStore((state) => {
-    return state.answers.numberOfAnswers;
+  const currentQuestionIndex = useAppStore((state) => {
+    return state.answers.currentQuestionIndex;
   });
   const questions = useAppStore((state) => {
     return state.game.questions;
@@ -13,8 +15,8 @@ export const useGamePage = () => {
   const requestQuestions = useAppStore((state) => {
     return state.game.requestQuestions;
   });
-  const clearNumberOfAnswers = useAppStore((state) => {
-    return state.answers.clearNumberOfAnswers;
+  const resetQuestionIndex = useAppStore((state) => {
+    return state.answers.resetQuestionIndex;
   });
   const checkedAnswers = useAppStore((state) => {
     return state.answers.checkedAnswers;
@@ -25,28 +27,30 @@ export const useGamePage = () => {
   const updateUserAnswers = useAppStore((state) => {
     return state.answers.updateUserAnswers;
   });
-  const isPageLoading = useAppStore((state) => {
+  const isLoading = useAppStore((state) => {
     return state.game.isLoading;
   });
-  const isNoQuestionsFound = useAppStore((state) => {
+  const isError = useAppStore((state) => {
     return state.game.isError;
   });
-  const increaseNumberOfAnswers = useAppStore((state) => {
-    return state.answers.increaseNumberOfAnswers;
+  const incrementQuestionIndex = useAppStore((state) => {
+    return state.answers.incrementQuestionIndex;
   });
   const toggleAnswer = useAppStore((state) => {
     return state.answers.toggleAnswer;
   });
 
+  const isNoQuestionsFound = !isLoading && !isError && questions.length === 0;
+
   const submitFinalAnswer = () => {
-    updateUserAnswers(checkedAnswers, questions[numberOfAnswers].id);
+    updateUserAnswers(checkedAnswers, questions[currentQuestionIndex].id);
     clearCheckedAnswers();
-    clearNumberOfAnswers();
+    resetQuestionIndex();
   };
 
   const goToNextQuestion = () => {
-    increaseNumberOfAnswers();
-    updateUserAnswers(checkedAnswers, questions[numberOfAnswers].id);
+    incrementQuestionIndex();
+    updateUserAnswers(checkedAnswers, questions[currentQuestionIndex].id);
     clearCheckedAnswers();
   };
 
@@ -59,18 +63,21 @@ export const useGamePage = () => {
     requestQuestions({
       category: categoryName,
       difficulty: difficultyLevel,
-      limit: limitQuestions,
+      limit: LIMIT_QUESTIONS,
     });
   }, [categoryName, difficultyLevel, requestQuestions]);
 
   return {
     submitFinalAnswer,
     goToNextQuestion,
-    isPageLoading,
+    isLoading,
+    isError,
     isNoQuestionsFound,
-    numberOfAnswers,
+    currentQuestionIndex,
     questions,
     checkedAnswers,
     toggleAnswer,
+    categoryName,
+    difficultyLevel,
   };
 };

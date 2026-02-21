@@ -1,8 +1,10 @@
-import { QuestionModel } from '@/entities/Question';
+import type { AnswersByQuestionId, QuestionModel } from '../model/types';
 
-export const getCorrectAnswers = (questions: QuestionModel[]) => {
-  const correctAnswers = questions.reduce((obj, question) => {
-    const result: string[] | null = [];
+export const getCorrectAnswers = (
+  questions: QuestionModel[]
+): AnswersByQuestionId => {
+  return questions.reduce<AnswersByQuestionId>((obj, question) => {
+    const result: string[] = [];
 
     for (const [key, value] of Object.entries(question.correct_answers)) {
       if (value === 'true') {
@@ -19,6 +21,4 @@ export const getCorrectAnswers = (questions: QuestionModel[]) => {
       [question.id]: result,
     };
   }, {});
-
-  return correctAnswers;
 };
