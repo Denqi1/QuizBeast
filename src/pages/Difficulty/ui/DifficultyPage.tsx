@@ -15,7 +15,23 @@ export const DifficultyPage = () => {
       height="100dvh"
       alignItems="center"
       flexDirection="column"
+      position="relative"
     >
+      <Box position="absolute" top={24} left={24}>
+        <Link to={pathKeys.category()} style={{ textDecoration: 'none' }}>
+          <Button
+            sx={{
+              color: 'rgba(255, 255, 255, 0.6)',
+              textTransform: 'none',
+              fontSize: '0.95rem',
+              '&:hover': { color: '#fff' },
+            }}
+          >
+            ← Categories
+          </Button>
+        </Link>
+      </Box>
+
       <Typography variant="h4" mb={3}>
         Choose your difficulty
       </Typography>

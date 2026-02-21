@@ -1,8 +1,10 @@
 import { useEffect } from 'react';
-import { Box, CircularProgress, Typography } from '@mui/material';
+import { Link } from 'react-router-dom';
+import { Box, Button, CircularProgress, Typography } from '@mui/material';
 import { motion } from 'framer-motion';
 
 import { useAppStore } from '@/app/store';
+import { pathKeys } from '@/shared/lib/reactRouter';
 
 import { CategoryList } from '../CategoryList';
 
@@ -36,20 +38,52 @@ export const CategoryPage = () => {
 
   return (
     <Box
-      maxWidth={644}
       display="flex"
-      justifyContent="center"
+      flexDirection="column"
       alignItems="center"
-      m="0px auto"
-      height="100dvh"
+      minHeight="100dvh"
+      px={3}
+      py={8}
+      position="relative"
     >
+      <Box position="absolute" top={24} left={24}>
+        <Link to={pathKeys.home()} style={{ textDecoration: 'none' }}>
+          <Button
+            sx={{
+              color: 'rgba(255, 255, 255, 0.6)',
+              textTransform: 'none',
+              fontSize: '0.95rem',
+              '&:hover': { color: '#fff' },
+            }}
+          >
+            ← Home
+          </Button>
+        </Link>
+      </Box>
+
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 4, ease: 'easeIn' }}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: 'easeOut' }}
       >
-        <Typography variant="h5">
-          Hi! what topic are you interested in?
+        <Typography
+          variant="h3"
+          fontWeight={700}
+          textAlign="center"
+          color="#fff"
+          mb={1}
+        >
+          Choose a topic
+        </Typography>
+
+        <Typography
+          variant="h6"
+          fontWeight={400}
+          textAlign="center"
+          color="rgba(255, 255, 255, 0.6)"
+          mb={6}
+        >
+          What do you want to be quizzed on?
         </Typography>
       </motion.div>
 
