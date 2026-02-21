@@ -1,5 +1,12 @@
-import { SVGProps } from 'react';
-import { motion } from 'framer-motion';
+import { CSSProperties, SVGProps } from 'react';
+
+const BOUNCE_STYLE_IN_OUT: CSSProperties = {
+  animation: 'couscousBounce 2s ease-in-out infinite',
+};
+
+const BOUNCE_STYLE_OUT: CSSProperties = {
+  animation: 'couscousBounce 2s ease-out infinite',
+};
 
 export const SmileCouscousSvg = (props: SVGProps<SVGSVGElement>) => {
   return (
@@ -9,6 +16,12 @@ export const SmileCouscousSvg = (props: SVGProps<SVGSVGElement>) => {
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
+      <style>{`
+        @keyframes couscousBounce {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(50px); }
+        }
+      `}</style>
       <g id="Basic Stance">
         <g id="Left Arm">
           <path
@@ -145,17 +158,7 @@ export const SmileCouscousSvg = (props: SVGProps<SVGSVGElement>) => {
             />
           </g>
         </g>
-        <motion.g
-          id="Ears &#38; Horns"
-          animate={{ y: [0, 50, 0] }}
-          transition={{
-            duration: 2,
-            repeat: Infinity,
-            ease: 'easeInOut',
-            type: 'keyframes',
-            times: [0, 1],
-          }}
-        >
+        <g id="Ears &#38; Horns" style={BOUNCE_STYLE_IN_OUT}>
           <g id="Group 25">
             <path
               id="Vector_26"
@@ -260,19 +263,8 @@ export const SmileCouscousSvg = (props: SVGProps<SVGSVGElement>) => {
               />
             </g>
           </g>
-        </motion.g>
-        <motion.g
-          id="Torso"
-          clipPath="url(#clip0_69_18457)"
-          animate={{ y: [0, 50, 0] }}
-          transition={{
-            duration: 2,
-            repeat: Infinity,
-            ease: 'easeOut',
-            type: 'keyframes',
-            times: [0, 1],
-          }}
-        >
+        </g>
+        <g id="Torso" clipPath="url(#clip0_69_18457)" style={BOUNCE_STYLE_OUT}>
           <g id="Torso_2">
             <path
               id="Vector_42"
@@ -590,18 +582,8 @@ export const SmileCouscousSvg = (props: SVGProps<SVGSVGElement>) => {
               fill="#31134F"
             />
           </g>
-        </motion.g>
-        <motion.g
-          id="Eyes"
-          animate={{ y: [0, 50, 0] }}
-          transition={{
-            duration: 2,
-            repeat: Infinity,
-            ease: 'easeOut',
-            type: 'keyframes',
-            times: [0, 1],
-          }}
-        >
+        </g>
+        <g id="Eyes" style={BOUNCE_STYLE_OUT}>
           <g id="Frame 4">
             <g id="Group 21">
               <path
@@ -704,19 +686,8 @@ export const SmileCouscousSvg = (props: SVGProps<SVGSVGElement>) => {
               </g>
             </g>
           </g>
-        </motion.g>
-        <motion.g
-          id="Mouth"
-          clipPath="url(#clip1_69_18457)"
-          animate={{ y: [0, 50, 0] }}
-          transition={{
-            duration: 2,
-            repeat: Infinity,
-            ease: 'easeOut',
-            type: 'keyframes',
-            times: [0, 1],
-          }}
-        >
+        </g>
+        <g id="Mouth" clipPath="url(#clip1_69_18457)" style={BOUNCE_STYLE_OUT}>
           <g id="Group 1">
             <path
               id="Vector_119"
@@ -1804,7 +1775,7 @@ export const SmileCouscousSvg = (props: SVGProps<SVGSVGElement>) => {
               fill="#72369C"
             />
           </g>
-        </motion.g>
+        </g>
       </g>
       <defs>
         <radialGradient
