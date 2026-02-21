@@ -1,2 +1,0 @@
-export const ENDPOINT_CATEGORIES = import.meta.env
-  .VITE_API_ENDPOINT_GET_CATEGORIES;

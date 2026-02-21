@@ -1,5 +1,3 @@
-const path = require('path');
-
 module.exports = {
   root: true,
   env: { browser: true, es2020: true },
@@ -8,6 +6,7 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
     'plugin:import/recommended',
+    'plugin:import/typescript',
     'plugin:jsx-a11y/recommended',
     'plugin:@typescript-eslint/recommended',
     'eslint-config-prettier',
@@ -15,13 +14,7 @@ module.exports = {
   ],
   settings: {
     react: { version: 'detect' },
-    'import/resolver': {
-      node: { paths: ['src'], extensions: ['.js', '.jsx', '.ts', '.tsx'] },
-      alias: {
-        map: [['@', path.resolve(__dirname, './src')]],
-        extensions: ['.js', '.jsx', '.ts', '.d.ts', '.tsx'],
-      },
-    },
+    'import/resolver': { typescript: { alwaysTryTypes: true } },
   },
   rules: {
     'import/no-cycle': [2, { maxDepth: '∞' }],
@@ -29,7 +22,8 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
-    'no-unused-vars': [
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': [
       'error',
       {
         vars: 'all',
