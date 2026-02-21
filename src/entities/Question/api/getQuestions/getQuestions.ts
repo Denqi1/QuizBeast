@@ -1,6 +1,5 @@
 import { instance } from '@/shared/lib/axios';
 
-import { ENDPOINT_QUESTIONS } from '../../lib/endpoints';
 import type { QuestionModel } from '../../model/types';
 import type { RequestQuestionsParams } from './getQuestions.types';
 
@@ -15,7 +14,7 @@ const requestQuestions = (params: RequestQuestionsParams) => {
     },
   };
 
-  return instance.get<QuestionModel[]>(ENDPOINT_QUESTIONS, config);
+  return instance.get<QuestionModel[]>('/questions', config);
 };
 
 export const getQuestions = async (params: RequestQuestionsParams) => {
