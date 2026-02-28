@@ -1,12 +1,23 @@
-/**
- * Почему-то это работает. Видимо примитивные данные приходят.
- *
- * TODO: Отрефакторить утилитку, чтобы сравнение шло не через приведение в строку,
- * а через глубокое сравнение.
- */
-export const isArraysEqual = (
-  firstArray: unknown[],
-  secondArray: unknown[]
-) => {
-  return firstArray.toString() === secondArray.toString();
+export const isArraysEqual = (firstArray: string[], secondArray: string[]) => {
+  if (!firstArray.length && !secondArray.length) {
+    return true;
+  }
+
+  if (firstArray.length !== secondArray.length) {
+    return false;
+  }
+
+  const firstArrayMap = new Set<string>();
+
+  for (const value of firstArray) {
+    firstArrayMap.add(value);
+  }
+
+  for (const value of secondArray) {
+    if (!firstArrayMap.has(value)) {
+      return false;
+    }
+  }
+
+  return true;
 };
