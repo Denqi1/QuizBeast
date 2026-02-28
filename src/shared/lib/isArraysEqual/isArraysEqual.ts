@@ -7,14 +7,11 @@ export const isArraysEqual = (firstArray: string[], secondArray: string[]) => {
     return false;
   }
 
-  const firstArrayMap = new Set<string>();
+  const firstArraySorted = firstArray.sort();
+  const secondArraySorted = secondArray.sort();
 
-  for (const value of firstArray) {
-    firstArrayMap.add(value);
-  }
-
-  for (const value of secondArray) {
-    if (!firstArrayMap.has(value)) {
+  for (const index in firstArraySorted) {
+    if (firstArraySorted[index] !== secondArraySorted[index]) {
       return false;
     }
   }

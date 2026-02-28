@@ -6,27 +6,25 @@ test('returns true for two empty arrays', () => {
 });
 
 test('returns true for arrays with identical strings', () => {
-  expect(isArraysEqual(['javascript'], ['javascript'])).toBe(true);
+  expect(isArraysEqual(['a'], ['a'])).toBe(true);
 });
 
 test('returns true for two arrays with different order but identical values', () => {
-  expect(
-    isArraysEqual(['javascript', 'typescript'], ['typescript', 'javascript'])
-  ).toBe(true);
+  expect(isArraysEqual(['a', 'b'], ['b', 'a'])).toBe(true);
 });
 
 test('returns false for two arrays with different strings', () => {
-  expect(isArraysEqual(['javascript'], ['typescript'])).toBe(false);
+  expect(isArraysEqual(['a'], ['b'])).toBe(false);
 });
 
 test('returns true when duplicates count matches', () => {
-  expect(
-    isArraysEqual(['javascript', 'javascript'], ['javascript', 'javascript'])
-  ).toBe(true);
+  expect(isArraysEqual(['a', 'a'], ['a', 'a'])).toBe(true);
 });
 
 test('returns false when duplicates count differs', () => {
-  expect(
-    isArraysEqual(['javascript', 'javascript'], ['javascript', 'typescript'])
-  ).toBe(false);
+  expect(isArraysEqual(['a', 'a'], ['a', 'b'])).toBe(false);
+});
+
+test('returns false if the duplicates are different.', () => {
+  expect(isArraysEqual(['a', 'a', 'b'], ['a', 'b', 'b'])).toBe(false);
 });
