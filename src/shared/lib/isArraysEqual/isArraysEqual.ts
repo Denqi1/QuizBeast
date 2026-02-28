@@ -7,8 +7,8 @@ export const isArraysEqual = (firstArray: string[], secondArray: string[]) => {
     return false;
   }
 
-  const firstArraySorted = firstArray.sort();
-  const secondArraySorted = secondArray.sort();
+  const firstArraySorted = [...firstArray].sort();
+  const secondArraySorted = [...secondArray].sort();
 
   for (const index in firstArraySorted) {
     if (firstArraySorted[index] !== secondArraySorted[index]) {
